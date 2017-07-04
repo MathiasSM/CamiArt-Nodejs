@@ -165,9 +165,6 @@ gulp.task('clean', () => del(['.tmp', 'dist/*', '!dist/.git'], {dot: true}));
 
 // Watch files for changes & reload
 gulp.task('serve', ['scripts', 'styles'], () => {
-  const server = $.liveServer.new('app.js');
-  server.start();
-
   browserSync({
     notify: false,
     // Customize the Browsersync console logging prefix
@@ -178,13 +175,9 @@ gulp.task('serve', ['scripts', 'styles'], () => {
     // Note: this uses an unsigned certificate which on first access
     //       will present a certificate warning in the browser.
     // https: true,
-    // server: ['.tmp', 'app'],
-    port: 3000,
-    // Proxy through Express.js
-    proxy: "http://localhost:5000"
+    server: ['.tmp', 'app'],
+    port: 3000
   });
-
-  gulp.watch('app.js', () => server.start.bind(server)()); //restart my server
 
   gulp.watch(['app/**/*.html'], reload);
   gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
