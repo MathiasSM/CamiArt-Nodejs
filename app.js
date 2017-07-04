@@ -12,7 +12,7 @@ const domain  = process.env.DOMAIN;
 const app = express();
 const router = express.Router();
 
-const publicFolder = process.env.PUBLICFOLDER === "" ? 'app' : process.env.PUBLICFOLDER;
+const publicFolder = process.env.PUBLICFOLDER == "" ? 'app' : ""+process.env.PUBLICFOLDER;
 
 const raiz = path.join(__dirname, publicFolder);
 
