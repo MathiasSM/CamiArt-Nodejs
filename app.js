@@ -7,7 +7,7 @@ const compression   = require('compression')
 //const serveStatic   = require('serve-static');
 
 const port    = process.env.PORT || 3000;
-const domain  =  process.env.DOMAIN;
+const domain  = process.env.DOMAIN;
 
 const app = express();
 const router = express.Router();
