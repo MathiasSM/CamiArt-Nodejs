@@ -43,8 +43,8 @@
     "extends": "google"
   },
   "dependencies": {
-    "gulp": "^3.9.1",
     "compression": "^1.6.2",
-    "express": "^4.15.3"
+    "express": "^4.15.3",
+    "gulp": "^3.9.1"
   }
 }
