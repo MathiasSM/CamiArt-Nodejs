@@ -12,7 +12,9 @@ const domain  = process.env.DOMAIN;
 const app = express();
 const router = express.Router();
 
-const raiz = path.join(__dirname, 'app');
+const publicFolder = process.env.PUBLICFOLDER === "" ? 'app' : process.env.PUBLICFOLDER;
+
+const raiz = path.join(__dirname, publicFolder);
 
 function ensureDomain(req, res, next) {
   if (!domain || req.hostname === domain) {
