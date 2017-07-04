@@ -6,4 +6,11 @@ node_js:
   - '6'
   - '5'
   - '4'
-  - '0.12'
+script: ./production.sh
+deploy:
+  local_dir: $PUBLICFOLDER
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  on:
+    branch: master
