@@ -59,14 +59,18 @@ gulp.task('images', () =>
 // Copy all files at the root level (app)
 gulp.task('copy', () =>
   gulp.src([
-    'app/*',
-    '!app/*.html',
-    '!app/*.local.*',
-    'node_modules/apache-server-configs/dist/.htaccess'
+    'app/**',
+    '!app/assets/**',
+    '!app/**/*.html',
+    '!app/**/*.partial.html'
+ //   'node_modules/apache-server-configs/dist/.htaccess'
   ], {
-    dot: true
-  }).pipe(gulp.dest('dist'))
-    .pipe($.size({title: 'copy'}))
+    dot: true,
+    nodir: true
+  })
+    .pipe(gulp.dest('dist'))
+    .pipe($.size({title: 'copy', showFiles: true}))
+
 );
 
 // Compile and automatically prefix stylesheets
@@ -129,8 +133,15 @@ gulp.task('scripts', () =>
 );
 
 // Scan your HTML for assets & optimize them
-gulp.task('html', () => {
-  return gulp.src('app/**/*.html')
+gulp.task('html', () => 
+    gulp.src([
+      'app/**/*.html',
+      '!app/assets/**',
+      '!app/**/*.partial.html'
+   //   'node_modules/apache-server-configs/dist/.htaccess'
+    ], {
+      nodir: true
+    })
     .pipe($.useref({
       searchPath: '{.tmp,app}',
       noAssets: true
@@ -141,10 +152,8 @@ gulp.task('html', () => {
         basePath: 'app/'
     }))
 
-    .pipe($.ignore.exclude(/.*\.local\..*/))
-
     // Minify any HTML
-    .pipe($.if('*html', $.htmlmin({
+    .pipe($.if('**/*.html', $.htmlmin({
       removeComments: true,
       collapseWhitespace: true,
       collapseBooleanAttributes: true,
@@ -156,9 +165,9 @@ gulp.task('html', () => {
       removeOptionalTags: true
     })))
     // Output files
-    .pipe($.if('*.html', $.size({title: 'html', showFiles: true})))
-    .pipe(gulp.dest('dist'));
-});
+    .pipe($.if('**.html', $.size({title: 'html', showFiles: true})))
+    .pipe(gulp.dest('dist'))
+);
 
 // Clean output directory
 gulp.task('clean', () => del(['.tmp', 'dist/*', '!dist/.git'], {dot: true}));

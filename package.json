@@ -31,15 +31,15 @@
     "sw-precache": "^3.2.0",
     "sw-toolbox": "^3.2.1"
   },
-  "dependencies": {
-    "compression": "^1.6.2"
-  },
   "engines": {
     "node": ">=4"
   },
   "private": true,
   "scripts": {
-    "build": "gulp"
+    "build": "gulp",
+    "start": "gulp serve:dist",
+    "stop": "pkill --signal SIGINT gulp",
+    "restart": "npm stop; npm start"
   },
   "eslintConfig": {
     "extends": "google"

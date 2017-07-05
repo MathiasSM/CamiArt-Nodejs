@@ -1,14 +1,17 @@
-# humanstxt.org/
-# The humans responsible & technology colophon
+/* TEAM */
 
-# TEAM
+  Awesome Brother: Mathias San Miguel
+  Site: mathiassm.github.io
+  Twitter: @mathiassm
+  From: Caracas, Venezuela
+  
+/* THANKS */
 
-  <name> -- <role> -- <twitter>
+  Domain Name (1st Year): CodeChef's SnackDown 2017 Prize
+  Hosting (Starting): Github Pages
 
-# THANKS
+/* SITE */
 
-  <name>
-
-# TECHNOLOGY COLOPHON
-
-  HTML5, CSS3
+  Language: English, Español
+  Doctype: HTML5
+  UI: React.js
